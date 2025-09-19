@@ -21,7 +21,7 @@ namespace ADO_NET
         public void Connection()
         {
             connection = new SqlConnection(connectionString_); 
-            Console.WriteLine("ready");
+            //Console.WriteLine("ready");
         }
 
     

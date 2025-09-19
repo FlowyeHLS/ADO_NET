@@ -9,18 +9,22 @@ using System.Threading.Tasks;
 //ADO.NET:
 using System.Data.SqlClient;
 using System.Runtime.InteropServices;
+using System.Configuration;
 
 namespace ADO_NET
 {
     internal class Program
     {
-        static string connectionString = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=Movies;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+        static string connectionString = "";
         
 
         static void Main(string[] args)
         {
+
+            connectionString = ConfigurationManager.ConnectionStrings["Movies"].ConnectionString;
+
             //1) Создаем подключение к Базе данных на Сервере:
-            //Console.WriteLine(connectionString);
+            Console.WriteLine(connectionString);
             //connection = new SqlConnection();
             //connection.ConnectionString = connectionString;
 
