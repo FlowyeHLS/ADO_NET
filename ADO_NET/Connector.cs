@@ -148,5 +148,33 @@ AND TABLE_NAME = '{table}'"
             return obj;
         }
 
+
+        public void SelectWithParameters()
+        {
+            string cmd = 
+                "SELECT movie_name,release_date,last_name,first_name " +
+                "FROM Movies,Directors " +
+                "WHERE director=director_id " +
+                "AND last_name=@last_name " +
+                "AND first_name=@first_name;";
+            SqlParameter parameter = new SqlParameter();
+            SqlCommand command = new SqlCommand(cmd, connection);
+           // command.Parameters.Add(new SqlParameter("@last_name",System.Data.SqlDbType.NVarChar)).Value = last_name;
+            //command.Parameters.Add(new SqlParameter("@first_name",System.Data.SqlDbType.NVarChar)).Value = first_name;
+            connection.Open();
+            SqlDataReader reader = command.ExecuteReader();
+            for (int i = 0; i < reader.FieldCount; ++i)
+                Console.Write(reader.GetName(i) + "\t");
+            Console.WriteLine();
+
+
+            while (reader.Read())
+            {
+                for(int i = 0; i < reader.FieldCount; ++i)
+                    Console.Write(reader[i] + "\t");
+                Console.WriteLine();
+            }
+            connection.Close();
+        }
     }
 }

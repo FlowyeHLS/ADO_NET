@@ -36,7 +36,7 @@ namespace ADO_NET
             //Select("SELECT * FROM Movies");
             Connector.Select("*", "Directors");
             Connector.Select("movie_name,release_date,first_name+last_name AS Режиссер", "Movies,Directors", "director=director_id");
-
+            
 
 #if SCALAR_CHECK
 			connection.Open();
@@ -56,10 +56,10 @@ namespace ADO_NET
 			Console.WriteLine(Scalar("SELECT COUNT(*) FROM Movies")); 
 #endif
 
-            Connector.InsertDirector();
+            //Connector.InsertDirector();
             //InsertMovie();
         }
-
+        
     }
 }
 /*
