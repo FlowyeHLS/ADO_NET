@@ -30,14 +30,16 @@
         {
             this.tabControl = new System.Windows.Forms.TabControl();
             this.tabPageStudents = new System.Windows.Forms.TabPage();
-            this.tabPageGroups = new System.Windows.Forms.TabPage();
             this.statusStrip = new System.Windows.Forms.StatusStrip();
+            this.tabPageGroups = new System.Windows.Forms.TabPage();
             this.tabPageDirections = new System.Windows.Forms.TabPage();
+            this.dataGridViewDirections = new System.Windows.Forms.DataGridView();
             this.tabPageDisciplines = new System.Windows.Forms.TabPage();
             this.tabPageTeachers = new System.Windows.Forms.TabPage();
-            this.dataGridViewDirections = new System.Windows.Forms.DataGridView();
+            this.toolStripStatusLabelCount = new System.Windows.Forms.ToolStripStatusLabel();
             this.tabControl.SuspendLayout();
             this.tabPageStudents.SuspendLayout();
+            this.statusStrip.SuspendLayout();
             this.tabPageDirections.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewDirections)).BeginInit();
             this.SuspendLayout();
@@ -67,6 +69,17 @@
             this.tabPageStudents.Text = "Students";
             this.tabPageStudents.UseVisualStyleBackColor = true;
             // 
+            // statusStrip
+            // 
+            this.statusStrip.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripStatusLabelCount});
+            this.statusStrip.Location = new System.Drawing.Point(3, 392);
+            this.statusStrip.Name = "statusStrip";
+            this.statusStrip.Size = new System.Drawing.Size(786, 26);
+            this.statusStrip.TabIndex = 0;
+            this.statusStrip.Text = "statusStrip1";
+            // 
             // tabPageGroups
             // 
             this.tabPageGroups.Location = new System.Drawing.Point(4, 25);
@@ -76,15 +89,6 @@
             this.tabPageGroups.TabIndex = 1;
             this.tabPageGroups.Text = "Groups";
             this.tabPageGroups.UseVisualStyleBackColor = true;
-            // 
-            // statusStrip
-            // 
-            this.statusStrip.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.statusStrip.Location = new System.Drawing.Point(3, 396);
-            this.statusStrip.Name = "statusStrip";
-            this.statusStrip.Size = new System.Drawing.Size(786, 22);
-            this.statusStrip.TabIndex = 0;
-            this.statusStrip.Text = "statusStrip1";
             // 
             // tabPageDirections
             // 
@@ -96,6 +100,17 @@
             this.tabPageDirections.TabIndex = 2;
             this.tabPageDirections.Text = "Directions";
             this.tabPageDirections.UseVisualStyleBackColor = true;
+            // 
+            // dataGridViewDirections
+            // 
+            this.dataGridViewDirections.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewDirections.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridViewDirections.Location = new System.Drawing.Point(3, 3);
+            this.dataGridViewDirections.Name = "dataGridViewDirections";
+            this.dataGridViewDirections.RowHeadersWidth = 51;
+            this.dataGridViewDirections.RowTemplate.Height = 24;
+            this.dataGridViewDirections.Size = new System.Drawing.Size(786, 415);
+            this.dataGridViewDirections.TabIndex = 0;
             // 
             // tabPageDisciplines
             // 
@@ -117,28 +132,25 @@
             this.tabPageTeachers.Text = "Teachers";
             this.tabPageTeachers.UseVisualStyleBackColor = true;
             // 
-            // dataGridViewDirections
+            // toolStripStatusLabelCount
             // 
-            this.dataGridViewDirections.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewDirections.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridViewDirections.Location = new System.Drawing.Point(3, 3);
-            this.dataGridViewDirections.Name = "dataGridViewDirections";
-            this.dataGridViewDirections.RowHeadersWidth = 51;
-            this.dataGridViewDirections.RowTemplate.Height = 24;
-            this.dataGridViewDirections.Size = new System.Drawing.Size(786, 415);
-            this.dataGridViewDirections.TabIndex = 0;
+            this.toolStripStatusLabelCount.Name = "toolStripStatusLabelCount";
+            this.toolStripStatusLabelCount.Size = new System.Drawing.Size(143, 20);
+            this.toolStripStatusLabelCount.Text = "toolStripStatusLabel";
             // 
-            // Form1
+            // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.tabControl);
-            this.Name = "Form1";
+            this.Name = "MainForm";
             this.Text = "Academy PD_411";
             this.tabControl.ResumeLayout(false);
             this.tabPageStudents.ResumeLayout(false);
             this.tabPageStudents.PerformLayout();
+            this.statusStrip.ResumeLayout(false);
+            this.statusStrip.PerformLayout();
             this.tabPageDirections.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewDirections)).EndInit();
             this.ResumeLayout(false);
@@ -154,6 +166,7 @@
         private System.Windows.Forms.TabPage tabPageDisciplines;
         private System.Windows.Forms.TabPage tabPageTeachers;
         private System.Windows.Forms.DataGridView dataGridViewDirections;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabelCount;
     }
 }
 

@@ -13,13 +13,25 @@ namespace MainForm
 {
     public partial class MainForm : Form
     {
-            string connectionString = "Data Source=FLOWYE\\SQLEXPRESS;Initial Catalog=PD_321;Integrated Security=True;Connect Timeout=30;Encrypt=True;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
-            SqlConnection connection;
+        string connectionString = "Data Source=FLOWYE\\SQLEXPRESS;Initial Catalog=PD_321;Integrated Security=True;Connect Timeout=30;Encrypt=True;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+        SqlConnection connection;
+
+
+
+
         public MainForm()
         {
             InitializeComponent();
             connection = new SqlConnection(connectionString);
+            tabControl.SelectedIndexChanged += tabControl_SelectedIndexChanged;
             LoadDirections();
+        }
+
+        private void tabControl_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            
+            if (tabControl.SelectedTab == tabPageDirections)
+                UpdateRecordCount();
         }
 
         void LoadDirections()
@@ -32,7 +44,7 @@ namespace MainForm
             for (int i = 0; i < reader.FieldCount; ++i)
                 table.Columns.Add(reader.GetName(i));
             while (reader.Read())
-            { 
+            {
                 DataRow row = table.NewRow();
                 for (int i = 0; i < reader.FieldCount; i++)
                     row[i] = reader[i];
@@ -41,7 +53,22 @@ namespace MainForm
             reader.Close();
             connection.Close();
             dataGridViewDirections.DataSource = table;
-        }
-    }
 
+            UpdateRecordCount();
+        }
+
+        private void UpdateRecordCount()
+        {
+            if (dataGridViewDirections.DataSource != null)
+            {
+                int count = dataGridViewDirections.Rows.Count;
+                if (dataGridViewDirections.AllowUserToAddRows)
+                    count -= 1;
+                             
+                toolStripStatusLabelCount.Text = $"Количество записей: {count}";
+
+            }
+        }
+
+    }
 }
