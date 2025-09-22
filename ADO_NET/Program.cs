@@ -34,7 +34,7 @@ namespace ADO_NET
 
             //Select("SELECT * FROM Directors");
             //Select("SELECT * FROM Movies");
-            Connector.Select("*", "Directors");
+            MyLibrary.MyLibrary.Select("*", "Directors");
             Connector.Select("movie_name,release_date,first_name+last_name AS Режиссер", "Movies,Directors", "director=director_id");
             
 
