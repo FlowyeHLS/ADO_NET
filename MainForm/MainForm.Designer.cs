@@ -43,6 +43,9 @@
             this.dataGridViewTeachers = new System.Windows.Forms.DataGridView();
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
+            this.buttonAddGroups = new System.Windows.Forms.Button();
+            this.buttonEditGroups = new System.Windows.Forms.Button();
+            this.buttonDeleteGroups = new System.Windows.Forms.Button();
             this.tabControl.SuspendLayout();
             this.tabPageStudents.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewStudents)).BeginInit();
@@ -98,6 +101,9 @@
             // 
             // tabPageGroups
             // 
+            this.tabPageGroups.Controls.Add(this.buttonDeleteGroups);
+            this.tabPageGroups.Controls.Add(this.buttonEditGroups);
+            this.tabPageGroups.Controls.Add(this.buttonAddGroups);
             this.tabPageGroups.Controls.Add(this.comboBoxGroupsDirection);
             this.tabPageGroups.Controls.Add(this.labelGroupsDirection);
             this.tabPageGroups.Controls.Add(this.dataGridViewGroups);
@@ -115,7 +121,7 @@
             this.comboBoxGroupsDirection.FormattingEnabled = true;
             this.comboBoxGroupsDirection.Location = new System.Drawing.Point(197, 4);
             this.comboBoxGroupsDirection.Name = "comboBoxGroupsDirection";
-            this.comboBoxGroupsDirection.Size = new System.Drawing.Size(321, 24);
+            this.comboBoxGroupsDirection.Size = new System.Drawing.Size(188, 24);
             this.comboBoxGroupsDirection.TabIndex = 2;
             this.comboBoxGroupsDirection.SelectedIndexChanged += new System.EventHandler(this.comboBoxGroupsDirection_SelectedIndexChanged);
             // 
@@ -141,6 +147,7 @@
             this.dataGridViewGroups.RowTemplate.Height = 24;
             this.dataGridViewGroups.Size = new System.Drawing.Size(786, 379);
             this.dataGridViewGroups.TabIndex = 0;
+            this.dataGridViewGroups.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewGroups_CellDoubleClick);
             // 
             // tabPageDirections
             // 
@@ -223,11 +230,41 @@
             this.statusStrip.TabIndex = 0;
             this.statusStrip.Text = "statusStrip1";
             // 
-            // toolStripStatusLabel1
+            // toolStripStatusLabel
             // 
-            this.toolStripStatusLabel.Name = "toolStripStatusLabel1";
+            this.toolStripStatusLabel.Name = "toolStripStatusLabel";
             this.toolStripStatusLabel.Size = new System.Drawing.Size(143, 20);
             this.toolStripStatusLabel.Text = "toolStripStatusLabel";
+            // 
+            // buttonAddGroups
+            // 
+            this.buttonAddGroups.Location = new System.Drawing.Point(409, 7);
+            this.buttonAddGroups.Name = "buttonAddGroups";
+            this.buttonAddGroups.Size = new System.Drawing.Size(88, 26);
+            this.buttonAddGroups.TabIndex = 3;
+            this.buttonAddGroups.Text = "Добавить";
+            this.buttonAddGroups.UseVisualStyleBackColor = true;
+            this.buttonAddGroups.Click += new System.EventHandler(this.buttonAddGroups_Click);
+            // 
+            // buttonEditGroups
+            // 
+            this.buttonEditGroups.Location = new System.Drawing.Point(503, 7);
+            this.buttonEditGroups.Name = "buttonEditGroups";
+            this.buttonEditGroups.Size = new System.Drawing.Size(120, 26);
+            this.buttonEditGroups.TabIndex = 4;
+            this.buttonEditGroups.Text = "Редактировать";
+            this.buttonEditGroups.UseVisualStyleBackColor = true;
+            this.buttonEditGroups.Click += new System.EventHandler(this.buttonEditGroups_Click);
+            // 
+            // buttonDeleteGroups
+            // 
+            this.buttonDeleteGroups.Location = new System.Drawing.Point(629, 6);
+            this.buttonDeleteGroups.Name = "buttonDeleteGroups";
+            this.buttonDeleteGroups.Size = new System.Drawing.Size(86, 27);
+            this.buttonDeleteGroups.TabIndex = 5;
+            this.buttonDeleteGroups.Text = "Удалить";
+            this.buttonDeleteGroups.UseVisualStyleBackColor = true;
+            this.buttonDeleteGroups.Click += new System.EventHandler(this.buttonDeleteGroups_Click);
             // 
             // MainForm
             // 
@@ -273,6 +310,9 @@
         private System.Windows.Forms.DataGridView dataGridViewDisciplines;
         private System.Windows.Forms.DataGridView dataGridViewTeachers;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel;
+        private System.Windows.Forms.Button buttonDeleteGroups;
+        private System.Windows.Forms.Button buttonEditGroups;
+        private System.Windows.Forms.Button buttonAddGroups;
     }
 }
 

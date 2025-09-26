@@ -143,5 +143,51 @@ namespace MainForm
         {
             toolStripStatusLabel.Text = $"{statusBarMessages[tabControl.SelectedIndex]}: {(sender as DataGridView).RowCount - 1}";
         }
+
+
+        ////////////////////////////////////////////////////////////////////////////////
+        private void DeleteGroup(int groupID)
+        {
+            DialogResult result = MessageBox.Show("Вы уверены, что хотите удалить эту группу?", "Удаление", MessageBoxButtons.YesNo);
+            if (result == DialogResult.Yes)
+            {
+                string deleteCmd = "DELETE FROM Groups WHERE group_id=@group_id";
+                using (SqlCommand cmd = new SqlCommand(deleteCmd, connection))
+                {
+                    cmd.Parameters.AddWithValue("@group_id", groupID);
+                    connection.Open();
+                    cmd.ExecuteNonQuery();
+                    connection.Close();
+                }
+                LoadTab(1);
+            }
+        }
+
+        private void dataGridViewGroups_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+         
+                
+        }
+
+        private void buttonAddGroups_Click(object sender, EventArgs e)
+        {
+           
+        }
+
+        private void buttonEditGroups_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void buttonDeleteGroups_Click(object sender, EventArgs e)
+        {
+            if (dataGridViewGroups.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Выберите группу для удаления");
+                return;
+            }
+            int groupId = Convert.ToInt32(dataGridViewGroups.SelectedRows[0].Cells["group_id"].Value);
+            DeleteGroup(groupId);
+        }
     }
 }
