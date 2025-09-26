@@ -12,7 +12,7 @@ namespace MainForm
         public string Tables { get; set; }
         public string Condition { get; set; }
         public string GroupBy { get; set; }
-        public Query(string fields,string tables,string condition,string group_by = "") 
+        public Query(string fields,string tables,string condition = "",string group_by = "") 
         {
             Fields = fields;
             Tables = tables;

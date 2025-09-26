@@ -223,9 +223,9 @@
             this.statusStrip.TabIndex = 0;
             this.statusStrip.Text = "statusStrip1";
             // 
-            // toolStripStatusLabel1
+            // toolStripStatusLabel
             // 
-            this.toolStripStatusLabel.Name = "toolStripStatusLabel1";
+            this.toolStripStatusLabel.Name = "toolStripStatusLabel";
             this.toolStripStatusLabel.Size = new System.Drawing.Size(143, 20);
             this.toolStripStatusLabel.Text = "toolStripStatusLabel";
             // 

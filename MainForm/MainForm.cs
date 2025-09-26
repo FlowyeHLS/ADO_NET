@@ -28,13 +28,13 @@ namespace MainForm
             ),
             new Query
             (
-            "group_id,group_name,direction_name",
+            "group_id,group_name,learning_days,start_time,direction_name",
             "Groups,Directions",
             "direction=direction_id"
             ),
-            new Query("*","Directions",""),
-            new Query("*","Disciplines", ""),
-            new Query("*","Teachers", "")
+            new Query("*","Directions"),
+            new Query("*","Disciplines"),
+            new Query("*","Teachers")
         };
 
         readonly string[] statusBarMessages = new string[]
@@ -74,6 +74,7 @@ namespace MainForm
             DataGridView dataGridView = this.Controls.Find($"dataGridView{tableName}", true)[0] as DataGridView;
             dataGridView.DataSource = Select("*", tableName);
             //toolStripStatusLabel.Text = $"{statusBarMessages[i]}: {dataGridView.RowCount - 1}";
+            if (i == 1) ConvertLearningDays();
         }
         void FillStatusBar(int i)
         {
@@ -101,6 +102,17 @@ namespace MainForm
             reader.Close();
             connection.Close();
             return table;
+        }
+
+        void ConvertLearningDays()
+        {
+            for(int i =0; i< dataGridViewGroups.RowCount;++i)
+            {
+
+                dataGridViewGroups.Rows[i].Cells["learning_days"].Value =
+                    new Week(Convert.ToByte(dataGridViewGroups.Rows[i].Cells["learning_days"].Value));
+                 
+            }
         }
         Dictionary<string,int> LoadDataToComboBox(string fields, string tables)
         {
