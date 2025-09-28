@@ -106,12 +106,23 @@ namespace MainForm
 
         void ConvertLearningDays()
         {
-            for(int i =0; i< dataGridViewGroups.RowCount;++i)
+            for (int i = 0; i < dataGridViewGroups.RowCount; ++i)
             {
+                object cellValue = dataGridViewGroups.Rows[i].Cells["learning_days"].Value;
+                byte learningDaysValue;
+
+                if (cellValue != null && cellValue != DBNull.Value)
+                {
+                    learningDaysValue = Convert.ToByte(cellValue);
+                }
+                else
+                {
+                    // Значение отсутствует, задаем по умолчанию, например 0
+                    learningDaysValue = 0;
+                }
 
                 dataGridViewGroups.Rows[i].Cells["learning_days"].Value =
-                    new Week(Convert.ToByte(dataGridViewGroups.Rows[i].Cells["learning_days"].Value));
-                 
+                    new Week(learningDaysValue);
             }
         }
         Dictionary<string,int> LoadDataToComboBox(string fields, string tables)
@@ -154,6 +165,23 @@ namespace MainForm
         private void dataGridViewChanged(object sender,EventArgs e)
         {
             toolStripStatusLabel.Text = $"{statusBarMessages[tabControl.SelectedIndex]}: {(sender as DataGridView).RowCount - 1}";
+        }
+
+        /////////////////////////////////////////////////////////////////////////////////////////////////
+        private void buttonAdd_Click(object sender, EventArgs e)
+        {
+            FormAddGroups formAdd = new FormAddGroups();
+            
+            if(formAdd.ShowDialog() == DialogResult.OK)
+            {
+                LoadTab(1);
+                MessageBox.Show("Группа добавленна");                
+            }
+        }
+
+        private void buttonEdit_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

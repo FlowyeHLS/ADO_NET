@@ -43,6 +43,8 @@
             this.dataGridViewTeachers = new System.Windows.Forms.DataGridView();
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
+            this.buttonAdd = new System.Windows.Forms.Button();
+            this.buttonEdit = new System.Windows.Forms.Button();
             this.tabControl.SuspendLayout();
             this.tabPageStudents.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewStudents)).BeginInit();
@@ -98,6 +100,8 @@
             // 
             // tabPageGroups
             // 
+            this.tabPageGroups.Controls.Add(this.buttonEdit);
+            this.tabPageGroups.Controls.Add(this.buttonAdd);
             this.tabPageGroups.Controls.Add(this.comboBoxGroupsDirection);
             this.tabPageGroups.Controls.Add(this.labelGroupsDirection);
             this.tabPageGroups.Controls.Add(this.dataGridViewGroups);
@@ -115,7 +119,7 @@
             this.comboBoxGroupsDirection.FormattingEnabled = true;
             this.comboBoxGroupsDirection.Location = new System.Drawing.Point(197, 4);
             this.comboBoxGroupsDirection.Name = "comboBoxGroupsDirection";
-            this.comboBoxGroupsDirection.Size = new System.Drawing.Size(321, 24);
+            this.comboBoxGroupsDirection.Size = new System.Drawing.Size(217, 24);
             this.comboBoxGroupsDirection.TabIndex = 2;
             this.comboBoxGroupsDirection.SelectedIndexChanged += new System.EventHandler(this.comboBoxGroupsDirection_SelectedIndexChanged);
             // 
@@ -229,6 +233,26 @@
             this.toolStripStatusLabel.Size = new System.Drawing.Size(143, 20);
             this.toolStripStatusLabel.Text = "toolStripStatusLabel";
             // 
+            // buttonAdd
+            // 
+            this.buttonAdd.Location = new System.Drawing.Point(435, 4);
+            this.buttonAdd.Name = "buttonAdd";
+            this.buttonAdd.Size = new System.Drawing.Size(98, 27);
+            this.buttonAdd.TabIndex = 3;
+            this.buttonAdd.Text = "Добавить";
+            this.buttonAdd.UseVisualStyleBackColor = true;
+            this.buttonAdd.Click += new System.EventHandler(this.buttonAdd_Click);
+            // 
+            // buttonEdit
+            // 
+            this.buttonEdit.Location = new System.Drawing.Point(539, 4);
+            this.buttonEdit.Name = "buttonEdit";
+            this.buttonEdit.Size = new System.Drawing.Size(126, 27);
+            this.buttonEdit.TabIndex = 4;
+            this.buttonEdit.Text = "Редактировать";
+            this.buttonEdit.UseVisualStyleBackColor = true;
+            this.buttonEdit.Click += new System.EventHandler(this.buttonEdit_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -273,6 +297,8 @@
         private System.Windows.Forms.DataGridView dataGridViewDisciplines;
         private System.Windows.Forms.DataGridView dataGridViewTeachers;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel;
+        private System.Windows.Forms.Button buttonAdd;
+        private System.Windows.Forms.Button buttonEdit;
     }
 }
 
