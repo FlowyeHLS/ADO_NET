@@ -100,10 +100,36 @@ namespace DataSet
                 }
                 Console.WriteLine();
             }
+            comboBoxStudendsGroup.DataSource = GroupsRelatedData.Tables[dsTable_Groups];
+            comboBoxStudendsGroup.DisplayMember = GroupsRelatedData.Tables[dsTable_Groups].Columns[dstGroups_col_group_name].ToString();
+            comboBoxStudendsGroup.ValueMember = GroupsRelatedData.Tables[dsTable_Groups].Columns[dstGroups_col_group_id].ToString();
+
+            comboBoxStudentsDirection.DataSource = GroupsRelatedData.Tables[dsTable_Directions];
+            comboBoxStudentsDirection.DisplayMember = GroupsRelatedData.Tables[dsTable_Directions].Columns[dstDirections_col_direction_name].ToString();
+            comboBoxStudentsDirection.ValueMember = GroupsRelatedData.Tables[dsTable_Directions].Columns[dstDirections_col_direction_id].ToString();
+
+            comboBoxStudendsGroup.SelectedIndexChanged += new EventHandler(GetKeyvalue);
+            comboBoxStudentsDirection.SelectedIndexChanged += new EventHandler(GetKeyvalue);
+
+
         }
+        void GetKeyvalue(object sender, EventArgs e)
+        {
+            Console.WriteLine($"{(sender as ComboBox).Name}:\t{(sender as ComboBox).SelectedValue}");
+        }
+
         [DllImport("kernel32.dll")]
         public static extern bool AllocConsole();
         [DllImport("kernel32.dll")]
         public static extern bool FreeConsole();
+
+        private void comboBoxStudentsDirection_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            comboBoxStudendsGroup.DataSource =
+                GroupsRelatedData.Tables["Groups"].Select
+                (
+                $"direction={comboBoxStudentsDirection.SelectedValue}"
+                ).CopyToDataTable();
+        }
     }
 }
