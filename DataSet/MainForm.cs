@@ -228,21 +228,38 @@ namespace DataSet
 
         private void comboBoxDisciplinesForDirection_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //1)Получаем набор значений из связующей таблицы
-            DataRow[] ddr = DisciplinesDirectionsRelation.Tables["DisciplinesDirectionsRelation"]
-                .Select($"direction={comboBoxDisciplinesForDirection.SelectedValue}");
+            ////1)Получаем набор значений из связующей таблицы
+            //DataRow[] ddr = DisciplinesDirectionsRelation.Tables["DisciplinesDirectionsRelation"]
+            //    .Select($"direction={comboBoxDisciplinesForDirection.SelectedValue}");
 
-            //2)Клонируем таблицу с дисциплинами
-            DataTable dtDisciplinesForDirection = DisciplinesDirectionsRelation.Tables["Disciplines"].Clone();
-            foreach (DataRow row in ddr)
-            {
-                DataRow discipline = DisciplinesDirectionsRelation.Tables["Disciplines"].Rows.Find(row["discipline"]);
-                dtDisciplinesForDirection.ImportRow(discipline);
-            }
+            ////2)Клонируем таблицу с дисциплинами
+            //DataTable dtDisciplinesForDirection = DisciplinesDirectionsRelation.Tables["Disciplines"].Clone();
+            //foreach (DataRow row in ddr)
+            //{
+            //    DataRow discipline = DisciplinesDirectionsRelation.Tables["Disciplines"].Rows.Find(row["discipline"]);
+            //    dtDisciplinesForDirection.ImportRow(discipline);
+            //}
 
 
-            //4)Отображаем выбранные дисциплины:
-            dataGridViewDisciplines.DataSource = dtDisciplinesForDirection;
+            ////4)Отображаем выбранные дисциплины:
+            //dataGridViewDisciplines.DataSource = dtDisciplinesForDirection;
+
+
+            /////////////////////////////////////////////////////////////////////////////////////////////////////
+
+            //DataRow[] ddr = DisciplinesDirectionsRelation.Tables["DisciplinesDirectionsRelation"]
+            //    .Select($"direction={comboBoxDisciplinesForDirection.SelectedValue}");
+            //DataTable dtDisciplines = DisciplinesDirectionsRelation.Tables["Disciplines"].Clone();
+
+            //object[] discipline_ids = ddr.Select(row => row["discipline"]).Distinct().ToArray();
+            //string filter = $"discipline_id IN ({string.Join(",", discipline_ids)})";
+            //dataGridViewDisciplines.DataSource =
+            //    DisciplinesDirectionsRelation.Tables["Disciplines"].Select(filter).CopyToDataTable();
+
+
+            //var disciplines = from discipline in DisciplinesDirectionsRelation.Tables["Disciplines"] select(" ");
+            //Console.WriteLine(disciplines.GetType());
+            
         }
     }
 }
