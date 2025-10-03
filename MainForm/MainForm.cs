@@ -9,12 +9,13 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 using System.Runtime.InteropServices;
+using System.Configuration;
 
 namespace MainForm
 {
     public partial class MainForm : Form
     {
-        string connectionString = "Data Source=FLOWYE\\SQLEXPRESS;Initial Catalog=PD_321;Integrated Security=True;Connect Timeout=30;Encrypt=True;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+        string connectionString = "Data Source=MSI-WS\\SQLEXPRESS;Initial Catalog=PD_321;Integrated Security=True;Connect Timeout=30;Encrypt=True;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
         SqlConnection connection;
         Dictionary<string, int> d_groupDirection;
 
@@ -50,6 +51,8 @@ namespace MainForm
         {
             InitializeComponent();
             AllocConsole();
+            connectionString = ConfigurationManager.ConnectionStrings["PD_321"].ConnectionString;
+            Console.WriteLine(connectionString);
             connection = new SqlConnection(connectionString);
             // LoadDirections();
             //LoadGroups();
@@ -102,6 +105,15 @@ namespace MainForm
             reader.Close();
             connection.Close();
             return table;
+        }
+
+        void Insert(string table, string fields, string values)
+        {
+            string cmd = $"INSERT {table}({fields}) values ({values})";
+            SqlCommand command = new SqlCommand(cmd,connection);
+            connection.Open();
+            command.ExecuteNonQuery();  
+            connection.Close();
         }
 
         void ConvertLearningDays()
@@ -182,6 +194,22 @@ namespace MainForm
         private void buttonEdit_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void buttonAddStudents_Click(object sender, EventArgs e)
+        {
+            StudentForm student = new StudentForm();
+            DialogResult result = student.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+
+                Insert
+                    (
+                    "Students",
+                    "last_name,first_name,middle_name,birth_date,email,phone,[group]",
+                    student.Student.ToString()
+                    );
+            }
         }
     }
 }
