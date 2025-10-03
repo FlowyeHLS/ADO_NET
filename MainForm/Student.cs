@@ -17,7 +17,7 @@ namespace MainForm
         public int Group { get; set; }
         public byte[] Photo { get; set; }
         public Student() { }
-        public Student(string last_name, string first_name,string middle_name,string birth_date,string email,string phone)
+        public Student(string last_name, string first_name,string middle_name,string birth_date,string email,string phone,int group)
         { 
             LastName = last_name;
             FirstName = first_name;
@@ -25,7 +25,7 @@ namespace MainForm
             BirthDate = birth_date;
             Email = email;
             Phone = phone;
-
+            Group = group;
         }
 
 
