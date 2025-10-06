@@ -10,7 +10,7 @@ namespace MainForm
     {
         public string LastName { get; set; }
         public string FirstName { get; set; }
-        public string MidleName { get; set; }
+        public string MiddleName { get; set; }
         public string BirthDate { get; set; }
         public string Email { get; set; }
         public string Phone { get; set; }
@@ -21,7 +21,7 @@ namespace MainForm
         { 
             LastName = last_name;
             FirstName = first_name;
-            MidleName = middle_name;
+            MiddleName = middle_name;
             BirthDate = birth_date;
             Email = email;
             Phone = phone;
@@ -32,7 +32,7 @@ namespace MainForm
 
         public override string ToString()
         {
-            return $"N'{LastName}',N'{FirstName}',N'{MidleName}',N'{Email}',N'{Phone}',N'{Group}'";
+            return $"N'{LastName}',N'{FirstName}',N'{MiddleName}','{BirthDate}',N'{Email}',N'{Phone}',{Group}";
         }
     }
 }

@@ -33,6 +33,7 @@
             this.buttonAddStudents = new System.Windows.Forms.Button();
             this.dataGridViewStudents = new System.Windows.Forms.DataGridView();
             this.tabPageGroups = new System.Windows.Forms.TabPage();
+            this.checkedListBoxVisible = new System.Windows.Forms.CheckedListBox();
             this.buttonEdit = new System.Windows.Forms.Button();
             this.buttonAdd = new System.Windows.Forms.Button();
             this.comboBoxGroupsDirection = new System.Windows.Forms.ComboBox();
@@ -46,7 +47,6 @@
             this.dataGridViewTeachers = new System.Windows.Forms.DataGridView();
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
-            this.checkedListBoxVisible = new System.Windows.Forms.CheckedListBox();
             this.tabControl.SuspendLayout();
             this.tabPageStudents.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewStudents)).BeginInit();
@@ -109,11 +109,15 @@
             this.dataGridViewStudents.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewStudents.Location = new System.Drawing.Point(4, 34);
             this.dataGridViewStudents.Margin = new System.Windows.Forms.Padding(2);
+            this.dataGridViewStudents.MultiSelect = false;
             this.dataGridViewStudents.Name = "dataGridViewStudents";
+            this.dataGridViewStudents.ReadOnly = true;
             this.dataGridViewStudents.RowHeadersWidth = 51;
             this.dataGridViewStudents.RowTemplate.Height = 24;
+            this.dataGridViewStudents.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewStudents.Size = new System.Drawing.Size(819, 390);
             this.dataGridViewStudents.TabIndex = 1;
+            this.dataGridViewStudents.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.dataGridViewStudents_MouseDoubleClick);
             // 
             // tabPageGroups
             // 
@@ -131,6 +135,19 @@
             this.tabPageGroups.TabIndex = 1;
             this.tabPageGroups.Text = "Groups";
             this.tabPageGroups.UseVisualStyleBackColor = true;
+            // 
+            // checkedListBoxVisible
+            // 
+            this.checkedListBoxVisible.FormattingEnabled = true;
+            this.checkedListBoxVisible.Items.AddRange(new object[] {
+            "group_id",
+            "group_name",
+            "direction"});
+            this.checkedListBoxVisible.Location = new System.Drawing.Point(704, 3);
+            this.checkedListBoxVisible.Name = "checkedListBoxVisible";
+            this.checkedListBoxVisible.Size = new System.Drawing.Size(120, 49);
+            this.checkedListBoxVisible.TabIndex = 5;
+            this.checkedListBoxVisible.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.checkedListBoxVisible_ItemCheck);
             // 
             // buttonEdit
             // 
@@ -187,6 +204,7 @@
             this.dataGridViewGroups.Name = "dataGridViewGroups";
             this.dataGridViewGroups.RowHeadersWidth = 51;
             this.dataGridViewGroups.RowTemplate.Height = 24;
+            this.dataGridViewGroups.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewGroups.Size = new System.Drawing.Size(825, 389);
             this.dataGridViewGroups.TabIndex = 0;
             // 
@@ -212,6 +230,7 @@
             this.dataGridViewDirections.Name = "dataGridViewDirections";
             this.dataGridViewDirections.RowHeadersWidth = 51;
             this.dataGridViewDirections.RowTemplate.Height = 24;
+            this.dataGridViewDirections.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewDirections.Size = new System.Drawing.Size(823, 441);
             this.dataGridViewDirections.TabIndex = 0;
             // 
@@ -237,6 +256,7 @@
             this.dataGridViewDisciplines.Location = new System.Drawing.Point(7, 26);
             this.dataGridViewDisciplines.Margin = new System.Windows.Forms.Padding(2);
             this.dataGridViewDisciplines.Name = "dataGridViewDisciplines";
+            this.dataGridViewDisciplines.ReadOnly = true;
             this.dataGridViewDisciplines.RowHeadersWidth = 51;
             this.dataGridViewDisciplines.RowTemplate.Height = 24;
             this.dataGridViewDisciplines.Size = new System.Drawing.Size(816, 397);
@@ -286,19 +306,6 @@
             this.toolStripStatusLabel.Name = "toolStripStatusLabel";
             this.toolStripStatusLabel.Size = new System.Drawing.Size(112, 17);
             this.toolStripStatusLabel.Text = "toolStripStatusLabel";
-            // 
-            // checkedListBoxVisible
-            // 
-            this.checkedListBoxVisible.FormattingEnabled = true;
-            this.checkedListBoxVisible.Items.AddRange(new object[] {
-            "group_id",
-            "group_name",
-            "direction"});
-            this.checkedListBoxVisible.Location = new System.Drawing.Point(704, 3);
-            this.checkedListBoxVisible.Name = "checkedListBoxVisible";
-            this.checkedListBoxVisible.Size = new System.Drawing.Size(120, 49);
-            this.checkedListBoxVisible.TabIndex = 5;
-            this.checkedListBoxVisible.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.checkedListBoxVisible_ItemCheck);
             // 
             // MainForm
             // 
