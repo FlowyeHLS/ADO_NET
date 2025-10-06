@@ -46,6 +46,7 @@
             this.dataGridViewTeachers = new System.Windows.Forms.DataGridView();
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
+            this.checkedListBoxVisible = new System.Windows.Forms.CheckedListBox();
             this.tabControl.SuspendLayout();
             this.tabPageStudents.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewStudents)).BeginInit();
@@ -104,6 +105,7 @@
             this.dataGridViewStudents.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.dataGridViewStudents.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dataGridViewStudents.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewStudents.Location = new System.Drawing.Point(4, 34);
             this.dataGridViewStudents.Margin = new System.Windows.Forms.Padding(2);
@@ -115,6 +117,7 @@
             // 
             // tabPageGroups
             // 
+            this.tabPageGroups.Controls.Add(this.checkedListBoxVisible);
             this.tabPageGroups.Controls.Add(this.buttonEdit);
             this.tabPageGroups.Controls.Add(this.buttonAdd);
             this.tabPageGroups.Controls.Add(this.comboBoxGroupsDirection);
@@ -179,12 +182,12 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridViewGroups.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridViewGroups.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewGroups.Location = new System.Drawing.Point(2, 32);
+            this.dataGridViewGroups.Location = new System.Drawing.Point(2, 56);
             this.dataGridViewGroups.Margin = new System.Windows.Forms.Padding(2);
             this.dataGridViewGroups.Name = "dataGridViewGroups";
             this.dataGridViewGroups.RowHeadersWidth = 51;
             this.dataGridViewGroups.RowTemplate.Height = 24;
-            this.dataGridViewGroups.Size = new System.Drawing.Size(825, 413);
+            this.dataGridViewGroups.Size = new System.Drawing.Size(825, 389);
             this.dataGridViewGroups.TabIndex = 0;
             // 
             // tabPageDirections
@@ -201,6 +204,7 @@
             // 
             // dataGridViewDirections
             // 
+            this.dataGridViewDirections.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dataGridViewDirections.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewDirections.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridViewDirections.Location = new System.Drawing.Point(2, 2);
@@ -228,6 +232,7 @@
             this.dataGridViewDisciplines.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.dataGridViewDisciplines.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dataGridViewDisciplines.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewDisciplines.Location = new System.Drawing.Point(7, 26);
             this.dataGridViewDisciplines.Margin = new System.Windows.Forms.Padding(2);
@@ -254,6 +259,7 @@
             this.dataGridViewTeachers.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.dataGridViewTeachers.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dataGridViewTeachers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewTeachers.Location = new System.Drawing.Point(6, 26);
             this.dataGridViewTeachers.Margin = new System.Windows.Forms.Padding(2);
@@ -280,6 +286,19 @@
             this.toolStripStatusLabel.Name = "toolStripStatusLabel";
             this.toolStripStatusLabel.Size = new System.Drawing.Size(112, 17);
             this.toolStripStatusLabel.Text = "toolStripStatusLabel";
+            // 
+            // checkedListBoxVisible
+            // 
+            this.checkedListBoxVisible.FormattingEnabled = true;
+            this.checkedListBoxVisible.Items.AddRange(new object[] {
+            "group_id",
+            "group_name",
+            "direction"});
+            this.checkedListBoxVisible.Location = new System.Drawing.Point(704, 3);
+            this.checkedListBoxVisible.Name = "checkedListBoxVisible";
+            this.checkedListBoxVisible.Size = new System.Drawing.Size(120, 49);
+            this.checkedListBoxVisible.TabIndex = 5;
+            this.checkedListBoxVisible.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.checkedListBoxVisible_ItemCheck);
             // 
             // MainForm
             // 
@@ -329,6 +348,7 @@
         private System.Windows.Forms.Button buttonAdd;
         private System.Windows.Forms.Button buttonEdit;
         private System.Windows.Forms.Button buttonAddStudents;
+        private System.Windows.Forms.CheckedListBox checkedListBoxVisible;
     }
 }
 

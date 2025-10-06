@@ -211,5 +211,30 @@ namespace MainForm
                     );
             }
         }
+
+
+
+        private void InitializeColumnCheckBox()
+        {
+            checkedListBoxVisible.Items.Clear();
+            foreach(DataGridViewColumn column in dataGridViewGroups.Columns)
+            {
+                checkedListBoxVisible.Items.Add(column.HeaderText, column.Visible);
+            }
+        }
+
+        private void checkedListBoxVisible_ItemCheck(object sender, ItemCheckEventArgs e)
+        {
+            this.BeginInvoke((MethodInvoker)delegate
+            {
+                string headerText = checkedListBoxVisible.Items[e.Index].ToString();
+                DataGridViewColumn column = dataGridViewGroups.Columns.Cast<DataGridViewColumn>().FirstOrDefault(c => c.HeaderText == headerText);
+                if(column != null)
+                {
+                    column.Visible = e.NewValue == CheckState.Checked;
+                }
+            }
+            );
+        }
     }
 }
