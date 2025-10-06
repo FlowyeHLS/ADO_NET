@@ -47,6 +47,8 @@
             this.dataGridViewTeachers = new System.Windows.Forms.DataGridView();
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
+            this.comboBoxStudentsDirection = new System.Windows.Forms.ComboBox();
+            this.comboBoxStudentsGroups = new System.Windows.Forms.ComboBox();
             this.tabControl.SuspendLayout();
             this.tabPageStudents.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewStudents)).BeginInit();
@@ -79,6 +81,8 @@
             // 
             // tabPageStudents
             // 
+            this.tabPageStudents.Controls.Add(this.comboBoxStudentsGroups);
+            this.tabPageStudents.Controls.Add(this.comboBoxStudentsDirection);
             this.tabPageStudents.Controls.Add(this.buttonAddStudents);
             this.tabPageStudents.Controls.Add(this.dataGridViewStudents);
             this.tabPageStudents.Location = new System.Drawing.Point(4, 22);
@@ -307,6 +311,22 @@
             this.toolStripStatusLabel.Size = new System.Drawing.Size(112, 17);
             this.toolStripStatusLabel.Text = "toolStripStatusLabel";
             // 
+            // comboBoxStudentsDirection
+            // 
+            this.comboBoxStudentsDirection.FormattingEnabled = true;
+            this.comboBoxStudentsDirection.Location = new System.Drawing.Point(502, 8);
+            this.comboBoxStudentsDirection.Name = "comboBoxStudentsDirection";
+            this.comboBoxStudentsDirection.Size = new System.Drawing.Size(121, 21);
+            this.comboBoxStudentsDirection.TabIndex = 3;
+            // 
+            // comboBoxStudentsGroups
+            // 
+            this.comboBoxStudentsGroups.FormattingEnabled = true;
+            this.comboBoxStudentsGroups.Location = new System.Drawing.Point(305, 6);
+            this.comboBoxStudentsGroups.Name = "comboBoxStudentsGroups";
+            this.comboBoxStudentsGroups.Size = new System.Drawing.Size(121, 21);
+            this.comboBoxStudentsGroups.TabIndex = 4;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -356,6 +376,8 @@
         private System.Windows.Forms.Button buttonEdit;
         private System.Windows.Forms.Button buttonAddStudents;
         private System.Windows.Forms.CheckedListBox checkedListBoxVisible;
+        private System.Windows.Forms.ComboBox comboBoxStudentsGroups;
+        private System.Windows.Forms.ComboBox comboBoxStudentsDirection;
     }
 }
 

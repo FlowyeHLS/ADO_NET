@@ -46,7 +46,7 @@ namespace MainForm
             textBoxMiddlename.Text = student.Rows[0][3].ToString();
 
             dateTimePicker.Value = Convert.ToDateTime(student.Rows[0][4]);
-            textBoxEMail.Text = student.Rows[0][5].ToString(); ;
+            textBoxEMail.Text = student.Rows[0][5].ToString(); 
             textBoxPhone.Text = student.Rows[0][6].ToString();
             comboBoxGroup.SelectedValue = student.Rows[0][8].ToString();
 
