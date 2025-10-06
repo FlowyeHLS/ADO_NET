@@ -50,6 +50,14 @@ namespace MainForm
             command.ExecuteNonQuery();
             connection.Close();
         }
+        public void Update(string table, string field, string condition)
+        {
+            string cmd = $"UPDATE {table} SET {field} WHERE {condition}";
+            SqlCommand command = new SqlCommand(cmd, connection);
+            connection.Open();
+            command.ExecuteNonQuery ();
+            connection.Close();
 
+        }
     }
 }
