@@ -84,9 +84,20 @@ namespace MainForm
                 ,dateTimePicker.Text
                 ,textBoxEMail.Text
                 ,textBoxPhone.Text
-                ,Convert.ToInt32(comboBoxGroup.SelectedValue)
+                ,Convert.ToInt32(comboBoxGroup.SelectedValue),
+                pictureBoxPhoto.Image
                 );
         }
 
+        private void buttonBrowsePhoto_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog dialog = new OpenFileDialog();
+            dialog.Filter = "JPG files (*.jpg)|*.jpg|PNG files (*.png)|*.png|All image files|*.png;*.jpg|All files (*.*)|(*.*)";
+            if (dialog.ShowDialog() == DialogResult.OK)
+            {
+                pictureBoxPhoto.Image = Image.FromFile(dialog.FileName);
+                
+            }
+        }
     }
 }

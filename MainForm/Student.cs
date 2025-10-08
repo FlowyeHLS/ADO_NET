@@ -4,6 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
+
+using System.Drawing;
 
 namespace MainForm
 {
@@ -16,9 +19,9 @@ namespace MainForm
         public string Email { get; set; }
         public string Phone { get; set; }
         public int Group { get; set; }
-        public byte[] Photo { get; set; }
+        public  Image Photo { get; set; }
         public Student() { }
-        public Student(string last_name, string first_name,string middle_name,string birth_date,string email,string phone,int group)
+        public Student(string last_name, string first_name,string middle_name,string birth_date,string email,string phone,int group,Image photo)
         { 
             LastName = last_name;
             FirstName = first_name;
@@ -27,8 +30,15 @@ namespace MainForm
             Email = email;
             Phone = phone;
             Group = group;
+            Photo = photo;
+            //Photo = SerializePhoto(photo);
         }
-
+        public byte[] SerializePhoto()
+        {
+            MemoryStream ms = new MemoryStream();
+            Photo.Save(ms, Photo.RawFormat);
+            return ms.ToArray();
+        }
 
 
         public override string ToString()

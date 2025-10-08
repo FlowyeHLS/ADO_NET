@@ -77,7 +77,8 @@ namespace MainForm
         {
             string tableName = tabControl.TabPages[i].Name.Remove(0,"tabPage".Length);
             DataGridView dataGridView = this.Controls.Find($"dataGridView{tableName}", true)[0] as DataGridView;
-            dataGridView.DataSource = Select("*", tableName);
+            //dataGridView.DataSource = Select("*", tableName);
+            dataGridView.DataSource = connector.Select(queries[i].Fields, queries[i].Tables, queries[i].Condition);
             //toolStripStatusLabel.Text = $"{statusBarMessages[i]}: {dataGridView.RowCount - 1}";
             if (i == 1) ConvertLearningDays();
             dataGridView.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
@@ -85,7 +86,7 @@ namespace MainForm
         }
         void FillStatusBar(int i)
         {
-
+            
         }
         DataTable Select(string fields, string tables,string condition = "")
         {
@@ -213,6 +214,8 @@ namespace MainForm
                     "last_name,first_name,middle_name,birth_date,email,phone,[group]",
                     student.Student.ToString()
                     );
+                int id = Convert.ToInt32(connector.Scalar("SELECT MAX(stud_id) FROM Students"));
+                connector.UploadPhoto(student.Student.SerializePhoto(), id, "photo", "Students");
             }
         }
 
