@@ -29,7 +29,7 @@ namespace MainForm
             comboBoxGroup.ValueMember = groups.Columns[0].ToString();
             InitForm();
         }
-        public StudentForm(int stud_id):this()
+        public StudentForm(int stud_id) : this()
         {
             //string[] fullName = row[1].ToString().Split(' ');
             //textBoxLastName.Text = fullName[0];
@@ -48,7 +48,7 @@ namespace MainForm
             textBoxMiddlename.Text = student.Rows[0][3].ToString();
 
             dateTimePicker.Value = Convert.ToDateTime(student.Rows[0][4]);
-            textBoxEMail.Text = student.Rows[0][5].ToString(); 
+            textBoxEMail.Text = student.Rows[0][5].ToString();
             textBoxPhone.Text = student.Rows[0][6].ToString();
             comboBoxGroup.SelectedValue = student.Rows[0][8].ToString();
 
@@ -64,14 +64,21 @@ namespace MainForm
 
             ////bf.Serialize(ms, student.Rows[0][7]);
             ////pictureBoxPhoto.Image = Image.FromStream(ms,true, true);
-            pictureBoxPhoto.Image = connector.DownloadPhoto(stud_id,"Students","photo");
+            try
+            {
+                pictureBoxPhoto.Image = connector.DownloadPhoto(stud_id, "Students", "photo");
+            }
+            catch (Exception ex)
+            {
+                //MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
         void InitForm()
         {
             textBoxLastName.Text = "Леонтьева";
             textBoxFirstName.Text = "Шарлотта";
             textBoxMiddlename.Text = "Владимировна";
-            dateTimePicker.Value = new DateTime(2007, 07, 08); 
+            dateTimePicker.Value = new DateTime(2007, 07, 08);
             textBoxEMail.Text = "sharlotta@gmail.com";
             textBoxPhone.Text = "+7(123)999-12-34";
             comboBoxGroup.SelectedIndex = 10;
@@ -92,12 +99,12 @@ namespace MainForm
             Student = new Student
                 (
                 textBoxLastName.Text
-                ,textBoxFirstName.Text
-                ,textBoxMiddlename .Text
-                ,dateTimePicker.Text
-                ,textBoxEMail.Text
-                ,textBoxPhone.Text
-                ,Convert.ToInt32(comboBoxGroup.SelectedValue),
+                , textBoxFirstName.Text
+                , textBoxMiddlename.Text
+                , dateTimePicker.Text
+                , textBoxEMail.Text
+                , textBoxPhone.Text
+                , Convert.ToInt32(comboBoxGroup.SelectedValue),
                 pictureBoxPhoto.Image
                 );
         }
@@ -109,7 +116,7 @@ namespace MainForm
             if (dialog.ShowDialog() == DialogResult.OK)
             {
                 pictureBoxPhoto.Image = Image.FromFile(dialog.FileName);
-                
+
             }
         }
     }
