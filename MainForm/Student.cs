@@ -10,16 +10,11 @@ using System.Drawing;
 
 namespace MainForm
 {
-    internal class Student
+    internal class Student:Human
     {
-        public string LastName { get; set; }
-        public string FirstName { get; set; }
-        public string MiddleName { get; set; }
-        public string BirthDate { get; set; }
-        public string Email { get; set; }
-        public string Phone { get; set; }
+       
         public int Group { get; set; }
-        public  Image Photo { get; set; }
+
         public Student() { }
         public Student(string last_name, string first_name,string middle_name,string birth_date,string email,string phone,int group,Image photo)
         { 
@@ -33,30 +28,15 @@ namespace MainForm
             Photo = photo;
             //Photo = SerializePhoto(photo);
         }
-        public byte[] SerializePhoto()
-        {
-            MemoryStream ms = new MemoryStream();
-            Photo.Save(ms, Photo.RawFormat);
-            return ms.ToArray();
-        }
-
-
+        
         public override string ToString()
         {
-            return $"N'{LastName}',N'{FirstName}',N'{MiddleName}','{BirthDate}',N'{Email}',N'{Phone}',{Group}";
+            return $"{base.ToString()},{Group}";
         }
 
-        public string ToStringUpdate()
+        public override string ToStringUpdate()
         {
-            return $@"
-last_name = N'{LastName}', 
-first_name = N'{FirstName}',
-middle_name = N'{MiddleName}',
-birth_date = '{BirthDate}',
-email = N'{Email}',
-phone = N'{Phone}',
-[group] = {Group}
-";
+            return $"{base.ToStringUpdate()}, [group] = {Group}";
         }
 
     }

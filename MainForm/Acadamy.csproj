@@ -54,6 +54,13 @@
     <Compile Include="FormAddGroups.Designer.cs">
       <DependentUpon>FormAddGroups.cs</DependentUpon>
     </Compile>
+    <Compile Include="Human.cs" />
+    <Compile Include="HumanForm.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="HumanForm.Designer.cs">
+      <DependentUpon>HumanForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -79,6 +86,9 @@
     <Compile Include="Week.cs" />
     <EmbeddedResource Include="FormAddGroups.resx">
       <DependentUpon>FormAddGroups.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HumanForm.resx">
+      <DependentUpon>HumanForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
