@@ -53,7 +53,7 @@
             // labelGroup
             // 
             this.labelGroup.AutoSize = true;
-            this.labelGroup.Location = new System.Drawing.Point(50, 229);
+            this.labelGroup.Location = new System.Drawing.Point(50, 228);
             this.labelGroup.Name = "labelGroup";
             this.labelGroup.Size = new System.Drawing.Size(45, 13);
             this.labelGroup.TabIndex = 6;
@@ -63,14 +63,14 @@
             // 
             this.comboBoxGroup.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxGroup.FormattingEnabled = true;
-            this.comboBoxGroup.Location = new System.Drawing.Point(115, 226);
+            this.comboBoxGroup.Location = new System.Drawing.Point(115, 225);
             this.comboBoxGroup.Name = "comboBoxGroup";
             this.comboBoxGroup.Size = new System.Drawing.Size(168, 21);
             this.comboBoxGroup.TabIndex = 13;
             // 
             // buttonBrowsePhoto
             // 
-            this.buttonBrowsePhoto.Location = new System.Drawing.Point(208, 315);
+            this.buttonBrowsePhoto.Location = new System.Drawing.Point(209, 258);
             this.buttonBrowsePhoto.Name = "buttonBrowsePhoto";
             this.buttonBrowsePhoto.Size = new System.Drawing.Size(75, 23);
             this.buttonBrowsePhoto.TabIndex = 15;
@@ -81,7 +81,7 @@
             // buttonOK
             // 
             this.buttonOK.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.buttonOK.Location = new System.Drawing.Point(436, 315);
+            this.buttonOK.Location = new System.Drawing.Point(379, 258);
             this.buttonOK.Name = "buttonOK";
             this.buttonOK.Size = new System.Drawing.Size(75, 23);
             this.buttonOK.TabIndex = 16;
@@ -92,7 +92,7 @@
             // buttonCancel
             // 
             this.buttonCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.buttonCancel.Location = new System.Drawing.Point(526, 315);
+            this.buttonCancel.Location = new System.Drawing.Point(469, 258);
             this.buttonCancel.Name = "buttonCancel";
             this.buttonCancel.Size = new System.Drawing.Size(75, 23);
             this.buttonCancel.TabIndex = 17;
@@ -103,7 +103,7 @@
             // 
             this.labelID.AutoSize = true;
             this.labelID.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.labelID.Location = new System.Drawing.Point(9, 315);
+            this.labelID.Location = new System.Drawing.Point(10, 258);
             this.labelID.Name = "labelID";
             this.labelID.Size = new System.Drawing.Size(27, 24);
             this.labelID.TabIndex = 18;
@@ -211,9 +211,9 @@
             // pictureBoxPhoto
             // 
             this.pictureBoxPhoto.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBoxPhoto.Location = new System.Drawing.Point(337, 13);
+            this.pictureBoxPhoto.Location = new System.Drawing.Point(317, 4);
             this.pictureBoxPhoto.Name = "pictureBoxPhoto";
-            this.pictureBoxPhoto.Size = new System.Drawing.Size(264, 229);
+            this.pictureBoxPhoto.Size = new System.Drawing.Size(226, 205);
             this.pictureBoxPhoto.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBoxPhoto.TabIndex = 14;
             this.pictureBoxPhoto.TabStop = false;
@@ -222,7 +222,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(613, 350);
+            this.ClientSize = new System.Drawing.Size(564, 293);
             this.Controls.Add(this.labelID);
             this.Controls.Add(this.buttonCancel);
             this.Controls.Add(this.buttonOK);
