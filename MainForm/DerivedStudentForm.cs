@@ -30,7 +30,7 @@ namespace MainForm
         protected override void Extract()
         {
             base.Extract();
-            comboBoxGroup.SelectedIndex = (Human as Student).Group;
+            comboBoxGroup.SelectedValue = (Human as Student).Group;
             labelID.Text = (Human as Student).ID.ToString();
         }
         protected override void buttonOK_Click(object sender, EventArgs e)
