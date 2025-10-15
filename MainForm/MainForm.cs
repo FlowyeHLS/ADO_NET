@@ -1,15 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Data.SqlClient;
-using System.Runtime.InteropServices;
-using System.Configuration;
+using static System.Collections.Specialized.BitVector32;
+
 
 namespace MainForm
 {
@@ -58,24 +60,28 @@ namespace MainForm
             connector = new Connector();
             // LoadDirections();
             //LoadGroups();
-            Console.WriteLine( this.Name);
+            Console.WriteLine(this.Name);
             Console.WriteLine(tabControl.TabCount);
+            //////////////////////////////////////////////////
+
             
-            d_groupDirection = LoadDataToComboBox("*","Directions");
+            
+            //////////////////////////////////////////////////
+            d_groupDirection = LoadDataToComboBox("*", "Directions");
             comboBoxGroupsDirection.Items.AddRange(d_groupDirection.Keys.ToArray());
             comboBoxGroupsDirection.SelectedIndex = 0;
 
             tabControl.SelectedIndex = 1;
 
-            for(int i =0; i<tabControl.TabCount; ++i)
+            for (int i = 0; i < tabControl.TabCount; ++i)
             {
-                (this.Controls.Find($"dataGridView{tabControl.TabPages[i].Name.Remove(0, "tabPage".Length)}",true)[0] as DataGridView).RowsAdded
+                (this.Controls.Find($"dataGridView{tabControl.TabPages[i].Name.Remove(0, "tabPage".Length)}", true)[0] as DataGridView).RowsAdded
                     += new DataGridViewRowsAddedEventHandler(this.dataGridViewChanged);
-            }    
+            }
         }
         void LoadTab(int i)
         {
-            string tableName = tabControl.TabPages[i].Name.Remove(0,"tabPage".Length);
+            string tableName = tabControl.TabPages[i].Name.Remove(0, "tabPage".Length);
             DataGridView dataGridView = this.Controls.Find($"dataGridView{tableName}", true)[0] as DataGridView;
             //dataGridView.DataSource = Select("*", tableName);
             dataGridView.DataSource = connector.Select(queries[i].Fields, queries[i].Tables, queries[i].Condition);
@@ -86,26 +92,26 @@ namespace MainForm
         }
         void FillStatusBar(int i)
         {
-            
+
         }
-        DataTable Select(string fields, string tables,string condition = "")
+        DataTable Select(string fields, string tables, string condition = "")
         {
             DataTable table = new DataTable();
             string cmd = $@"SELECT {fields} FROM {tables}";
             if (!string.IsNullOrWhiteSpace(condition)) cmd += $" WHERE {condition}";
             cmd += ";";
 
-            SqlCommand command = new SqlCommand(cmd,connection);
+            SqlCommand command = new SqlCommand(cmd, connection);
 
             connection.Open();
             SqlDataReader reader = command.ExecuteReader();
-            for(int i = 0; i < reader.FieldCount;++i)
+            for (int i = 0; i < reader.FieldCount; ++i)
                 table.Columns.Add(reader.GetName(i));
             while (reader.Read())
             {
                 DataRow row = table.NewRow();
                 for (int i = 0; i < reader.FieldCount; ++i) row[i] = reader[i];
-                table.Rows.Add(row);    
+                table.Rows.Add(row);
             }
             reader.Close();
             connection.Close();
@@ -115,9 +121,9 @@ namespace MainForm
         void Insert(string table, string fields, string values)
         {
             string cmd = $"INSERT {table}({fields}) values ({values})";
-            SqlCommand command = new SqlCommand(cmd,connection);
+            SqlCommand command = new SqlCommand(cmd, connection);
             connection.Open();
-            command.ExecuteNonQuery();  
+            command.ExecuteNonQuery();
             connection.Close();
         }
 
@@ -142,15 +148,15 @@ namespace MainForm
                     new Week(learningDaysValue);
             }
         }
-        Dictionary<string,int> LoadDataToComboBox(string fields, string tables)
+        Dictionary<string, int> LoadDataToComboBox(string fields, string tables)
         {
-            Dictionary<string,int> dictionary = new Dictionary<string, int>();
+            Dictionary<string, int> dictionary = new Dictionary<string, int>();
             dictionary.Add("Все", 0);
             string cmd = $"SELECT {fields} FROM {tables}";
             SqlCommand command = new SqlCommand(cmd, connection);
             connection.Open();
             SqlDataReader reader = command.ExecuteReader();
-            while(reader.Read())
+            while (reader.Read())
             {
                 //comboBoxGroupsDirection.Items.Add(reader[1]);
                 dictionary.Add(reader[1].ToString(), Convert.ToInt32(reader[0]));
@@ -164,7 +170,7 @@ namespace MainForm
         {
             string condition = "direction=direction_id";
             if (comboBoxGroupsDirection.SelectedItem.ToString() != "Все")
-                condition+= $" AND direction={d_groupDirection[comboBoxGroupsDirection.SelectedItem.ToString()]}";
+                condition += $" AND direction={d_groupDirection[comboBoxGroupsDirection.SelectedItem.ToString()]}";
             dataGridViewGroups.DataSource = Select
                 (
                 "group_id,group_name,direction",
@@ -179,7 +185,7 @@ namespace MainForm
         {
             LoadTab((sender as TabControl).SelectedIndex);
         }
-        private void dataGridViewChanged(object sender,EventArgs e)
+        private void dataGridViewChanged(object sender, EventArgs e)
         {
             toolStripStatusLabel.Text = $"{statusBarMessages[tabControl.SelectedIndex]}: {(sender as DataGridView).RowCount - 1}";
         }
@@ -188,11 +194,11 @@ namespace MainForm
         private void buttonAdd_Click(object sender, EventArgs e)
         {
             FormAddGroups formAdd = new FormAddGroups();
-            
-            if(formAdd.ShowDialog() == DialogResult.OK)
+
+            if (formAdd.ShowDialog() == DialogResult.OK)
             {
                 LoadTab(1);
-                MessageBox.Show("Группа добавленна");                
+                MessageBox.Show("Группа добавленна");
             }
         }
 
@@ -224,7 +230,7 @@ namespace MainForm
         private void InitializeColumnCheckBox()
         {
             checkedListBoxVisible.Items.Clear();
-            foreach(DataGridViewColumn column in dataGridViewGroups.Columns)
+            foreach (DataGridViewColumn column in dataGridViewGroups.Columns)
             {
                 checkedListBoxVisible.Items.Add(column.HeaderText, column.Visible);
             }
@@ -236,7 +242,7 @@ namespace MainForm
             {
                 string headerText = checkedListBoxVisible.Items[e.Index].ToString();
                 DataGridViewColumn column = dataGridViewGroups.Columns.Cast<DataGridViewColumn>().FirstOrDefault(c => c.HeaderText == headerText);
-                if(column != null)
+                if (column != null)
                 {
                     column.Visible = e.NewValue == CheckState.Checked;
                 }
@@ -264,7 +270,7 @@ namespace MainForm
             DerivedStudentForm student = new DerivedStudentForm(i);
             DialogResult result = student.ShowDialog();
             if (result == DialogResult.OK)
-            { 
+            {
 
                 connector.Update
                     (
@@ -275,5 +281,24 @@ namespace MainForm
                 connector.UploadPhoto((student.Human as Student).SerializePhoto(), i, "photo", "students");
             }
         }
+
+
+
+        //public static void ProtectSection(string sectionName = "connectionStrings", string provider = "DataProtectionConfigurationProvider")
+        //{
+        //    
+        //    Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+        //    ConfigurationSection section = config.GetSection("connectionStrings");
+
+        //    if (section != null && !section.SectionInformation.IsProtected)
+        //    {
+        //        section.SectionInformation.ProtectSection("DataProtectionConfigurationProvider");
+        //        section.SectionInformation.ForceSave = true;
+        //        config.Save(ConfigurationSaveMode.Full);
+        //    }
+        //}
+
+
+
     }
 }

@@ -60,6 +60,12 @@
     <Compile Include="DerivedStudentForm.Designer.cs">
       <DependentUpon>DerivedStudentForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="SystemLog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SystemLog.Designer.cs">
+      <DependentUpon>SystemLog.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormAddGroups.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -101,6 +107,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="DerivedStudentForm.resx">
       <DependentUpon>DerivedStudentForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SystemLog.resx">
+      <DependentUpon>SystemLog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormAddGroups.resx">
       <DependentUpon>FormAddGroups.cs</DependentUpon>
