@@ -13,6 +13,7 @@ using System.Windows.Forms;
 using static System.Collections.Specialized.BitVector32;
 
 
+
 namespace MainForm
 {
     public partial class MainForm : Form
@@ -64,8 +65,8 @@ namespace MainForm
             Console.WriteLine(tabControl.TabCount);
             //////////////////////////////////////////////////
 
-            
-            
+
+
             //////////////////////////////////////////////////
             d_groupDirection = LoadDataToComboBox("*", "Directions");
             comboBoxGroupsDirection.Items.AddRange(d_groupDirection.Keys.ToArray());
@@ -281,8 +282,6 @@ namespace MainForm
                 connector.UploadPhoto((student.Human as Student).SerializePhoto(), i, "photo", "students");
             }
         }
-
-
 
         //public static void ProtectSection(string sectionName = "connectionStrings", string provider = "DataProtectionConfigurationProvider")
         //{

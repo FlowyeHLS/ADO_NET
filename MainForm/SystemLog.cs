@@ -26,8 +26,8 @@ namespace MainForm
         {
             if (textBoxLogin.Text == "Admin" && textBoxPassword.Text == "12345")
             {
-                MainForm s = new MainForm();
-                s.Show();
+                MainForm showMainForm = new MainForm();
+                showMainForm.Show();
 
                 this.Hide();
             }
