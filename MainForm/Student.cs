@@ -9,7 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data;
-
+using DataBaseTool;
 namespace MainForm
 {
     internal class Student : Human

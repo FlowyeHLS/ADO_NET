@@ -15,26 +15,38 @@
     {
         "Entry"
         {
+        "MsmKey" = "8:_1AE711C89BCFED55093774ED56812B32"
+        "OwnerKey" = "8:_FD308DD527084323B0880C73AEE52105"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_763E8AC9E7A64B94BDBF59D1D33A9697"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_B8AF1938C11547B7BBA6323756E6D8F6"
+        "MsmKey" = "8:_E2263DE669B59AB1AF10AD64BDA81041"
+        "OwnerKey" = "8:_FD308DD527084323B0880C73AEE52105"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_FD308DD527084323B0880C73AEE52105"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_E2263DE669B59AB1AF10AD64BDA81041"
-        "OwnerKey" = "8:_B8AF1938C11547B7BBA6323756E6D8F6"
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_FD308DD527084323B0880C73AEE52105"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_B8AF1938C11547B7BBA6323756E6D8F6"
+        "OwnerKey" = "8:_1AE711C89BCFED55093774ED56812B32"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -68,6 +80,14 @@
             "PrerequisitesLocation" = "2:1"
             "Url" = "8:"
             "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.7.2"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4.7.2 (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.7.2"
+                    }
+                }
             }
         }
         "Release"
@@ -92,6 +112,14 @@
             "PrerequisitesLocation" = "2:1"
             "Url" = "8:"
             "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.7.2"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4.7.2 (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.7.2"
+                    }
+                }
             }
         }
     }
@@ -122,6 +150,37 @@
         }
         "File"
         {
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_1AE711C89BCFED55093774ED56812B32"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:DataBaseTool, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_1AE711C89BCFED55093774ED56812B32"
+                    {
+                    "Name" = "8:DataBaseTool.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:DataBaseTool.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_6DE12569311040A1B6586573634320F4"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_763E8AC9E7A64B94BDBF59D1D33A9697"
             {
             "SourcePath" = "8:..\\..\\..\\..\\Desktop\\i.ico"
@@ -182,7 +241,7 @@
             "{1525181F-901A-416C-8A58-119130FE478E}:_5881B2F9685440B6B11D877CC56719BF"
             {
             "Name" = "8:#1916"
-            "AlwaysCreate" = "11:FALSE"
+            "AlwaysCreate" = "11:TRUE"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Property" = "8:DesktopFolder"
@@ -369,7 +428,7 @@
             "ShowCmd" = "3:1"
             "IconIndex" = "3:0"
             "Transitive" = "11:FALSE"
-            "Target" = "8:_B8AF1938C11547B7BBA6323756E6D8F6"
+            "Target" = "8:"
             "Folder" = "8:_EEE979E33A1947EE84C8B5A2F8DAE57E"
             "WorkingFolder" = "8:_6DE12569311040A1B6586573634320F4"
             "Icon" = "8:_763E8AC9E7A64B94BDBF59D1D33A9697"
@@ -383,7 +442,7 @@
             "ShowCmd" = "3:1"
             "IconIndex" = "3:0"
             "Transitive" = "11:FALSE"
-            "Target" = "8:_B8AF1938C11547B7BBA6323756E6D8F6"
+            "Target" = "8:"
             "Folder" = "8:_5881B2F9685440B6B11D877CC56719BF"
             "WorkingFolder" = "8:_6DE12569311040A1B6586573634320F4"
             "Icon" = "8:_763E8AC9E7A64B94BDBF59D1D33A9697"
@@ -788,7 +847,7 @@
         }
         "ProjectOutput"
         {
-            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_B8AF1938C11547B7BBA6323756E6D8F6"
+            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_FD308DD527084323B0880C73AEE52105"
             {
             "SourcePath" = "8:..\\MainForm\\obj\\Debug\\MainForm.exe"
             "TargetName" = "8:"

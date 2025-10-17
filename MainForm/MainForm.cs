@@ -11,14 +11,18 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Collections.Specialized.BitVector32;
-
+using DataBaseTool;
 
 
 namespace MainForm
 {
     public partial class MainForm : Form
     {
-        string connectionString = "Data Source=MSI-WS\\SQLEXPRESS;Initial Catalog=PD_321;Integrated Security=True;Connect Timeout=30;Encrypt=True;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+        //LoginData LoginData { get; set; }
+        LoginForm LoginForm;
+        string connectionString = "";
+            
+       // string connectionString = "Data Source=MSI-WS\\SQLEXPRESS;Initial Catalog=PD_321;Integrated Security=True;Connect Timeout=30;Encrypt=True;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
         SqlConnection connection;
         Connector connector;
         Dictionary<string, int> d_groupDirection;
@@ -55,30 +59,40 @@ namespace MainForm
         {
             InitializeComponent();
             AllocConsole();
-            connectionString = ConfigurationManager.ConnectionStrings["PD_321"].ConnectionString;
-            Console.WriteLine(connectionString);
-            connection = new SqlConnection(connectionString);
-            connector = new Connector();
-            // LoadDirections();
-            //LoadGroups();
-            Console.WriteLine(this.Name);
-            Console.WriteLine(tabControl.TabCount);
-            //////////////////////////////////////////////////
-
-
-
-            ////////////////////////////////////////////////// 
-            d_groupDirection = LoadDataToComboBox("*", "Directions");
-            comboBoxGroupsDirection.Items.AddRange(d_groupDirection.Keys.ToArray());
-            comboBoxGroupsDirection.SelectedIndex = 0;
-
-            tabControl.SelectedIndex = 1;
-
-            for (int i = 0; i < tabControl.TabCount; ++i)
+            //connectionString = ConfigurationManager.ConnectionStrings["PD_321"].ConnectionString;
+            LoginForm = new LoginForm();
+            if (LoginForm.ShowDialog() == DialogResult.OK)
             {
-                (this.Controls.Find($"dataGridView{tabControl.TabPages[i].Name.Remove(0, "tabPage".Length)}", true)[0] as DataGridView).RowsAdded
-                    += new DataGridViewRowsAddedEventHandler(this.dataGridViewChanged);
+                connectionString = GetLoginData(LoginForm.LoginData);
+                Console.WriteLine(connectionString);
+                connection = new SqlConnection(connectionString);
+                connector = new Connector();
+                // LoadDirections();
+                //LoadGroups();
+                Console.WriteLine(this.Name);
+                Console.WriteLine(tabControl.TabCount);
+                //////////////////////////////////////////////////
+
+
+
+                ////////////////////////////////////////////////// 
+                d_groupDirection = LoadDataToComboBox("*", "Directions");
+                comboBoxGroupsDirection.Items.AddRange(d_groupDirection.Keys.ToArray());
+                comboBoxGroupsDirection.SelectedIndex = 0;
+
+                tabControl.SelectedIndex = 1;
+
+                for (int i = 0; i < tabControl.TabCount; ++i)
+                {
+                    (this.Controls.Find($"dataGridView{tabControl.TabPages[i].Name.Remove(0, "tabPage".Length)}", true)[0] as DataGridView).RowsAdded
+                        += new DataGridViewRowsAddedEventHandler(this.dataGridViewChanged);
+
+                }
             }
+        }
+        string GetLoginData(LoginData LoginData)
+        {
+            return $"Data Source={LoginData.Server};Initial Catalog=PD_321;Integrated Security=False;Connect Timeout=5;Encrypt=True;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False;user id={LoginData.Login};password={LoginData.Password}";
         }
         void LoadTab(int i)
         {

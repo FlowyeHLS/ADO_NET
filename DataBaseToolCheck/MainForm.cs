@@ -19,7 +19,7 @@ namespace DataBaseToolCheck
         public MainForm()
         {
             InitializeComponent();
-            AllocConsole();
+            //AllocConsole();
             Connector connector = new Connector();
             dataGridView.DataSource = connector.Select("*","Students");
         }

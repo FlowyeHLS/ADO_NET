@@ -60,6 +60,13 @@
     <Compile Include="DerivedStudentForm.Designer.cs">
       <DependentUpon>DerivedStudentForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="LoginData.cs" />
+    <Compile Include="LoginForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LoginForm.Designer.cs">
+      <DependentUpon>LoginForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="SystemLog.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -108,6 +115,9 @@
     <EmbeddedResource Include="DerivedStudentForm.resx">
       <DependentUpon>DerivedStudentForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="LoginForm.resx">
+      <DependentUpon>LoginForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="SystemLog.resx">
       <DependentUpon>SystemLog.cs</DependentUpon>
     </EmbeddedResource>
@@ -147,6 +157,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DataBaseTool\DataBaseTool.csproj">
+      <Project>{422c5660-4499-4173-b878-0d611565a9a1}</Project>
+      <Name>DataBaseTool</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
