@@ -20,6 +20,12 @@ namespace LINQ
             foreach (int i in FibonacciQuery)
                 Console.Write($"{i}\t");
             Console.WriteLine();
+
+            ///////////////////////////////////////////////////////////////////////////
+            //Immidiate queries: 
+            Console.WriteLine((from i in arr select i).Count());
+            Console.WriteLine((from i in arr select i).Sum());
+            //List<int> i_list = (from i in arr select i).To
         }
         [DllImport("kernel32.dll")]
         public static extern bool AllocConsole();

@@ -51,7 +51,7 @@ namespace DataSet
             const string dstGroups_col_direction = "direction";
             const string dstGroups_col_learning_days = "learning_days";
             const string dstGroups_col_start_time = "start_time";
-            GroupsRelatedData.Tables.Add (dsTable_Groups);
+            GroupsRelatedData.Tables.Add(dsTable_Groups);
             GroupsRelatedData.Tables[dsTable_Groups].Columns.Add(dstGroups_col_group_id);
             GroupsRelatedData.Tables[dsTable_Groups].Columns.Add(dstGroups_col_group_name);
             GroupsRelatedData.Tables[dsTable_Groups].Columns.Add(dstGroups_col_direction);
@@ -73,15 +73,15 @@ namespace DataSet
             string direction_cmd = "SELECT * FROM Directions";
             string groups_cmd = "SELECT * FROM Groups";
 
-            SqlDataAdapter directionsAdapter = new SqlDataAdapter(direction_cmd,connection);
-            SqlDataAdapter groupsAdapter = new SqlDataAdapter(groups_cmd,connection);
+            SqlDataAdapter directionsAdapter = new SqlDataAdapter(direction_cmd, connection);
+            SqlDataAdapter groupsAdapter = new SqlDataAdapter(groups_cmd, connection);
 
             directionsAdapter.Fill(GroupsRelatedData.Tables[dsTable_Directions]);
             groupsAdapter.Fill(GroupsRelatedData.Tables[dsTable_Groups]);
 
             AllocConsole();
-            
-            foreach(DataRow row in GroupsRelatedData.Tables[dsTable_Directions].Rows)
+
+            foreach (DataRow row in GroupsRelatedData.Tables[dsTable_Directions].Rows)
             {
                 Console.WriteLine($"{row[dstDirections_col_direction_id]}\\t{row[dstDirections_col_direction_name]}");
             }
@@ -96,10 +96,10 @@ namespace DataSet
             //    }
             //    Console.WriteLine();
             //}
-            DataRow[] RPO = GroupsRelatedData.Tables[dsTable_Directions].Rows[0].GetChildRows(dsRelation_GroupsDirections); 
-            for(int i = 0;i < RPO.Length;i++)
+            DataRow[] RPO = GroupsRelatedData.Tables[dsTable_Directions].Rows[0].GetChildRows(dsRelation_GroupsDirections);
+            for (int i = 0; i < RPO.Length; i++)
             {
-                for(int j = 0; j <RPO[i].ItemArray.Length;j++)
+                for (int j = 0; j < RPO[i].ItemArray.Length; j++)
                 {
                     Console.Write($"{RPO[i].ItemArray[j]}\t\t");
                 }
@@ -136,7 +136,7 @@ namespace DataSet
             string dsDirections_direction_id = "direction_id";
             string dsDirections_direction_name = "direction_name";
             DisciplinesDirectionsRelation.Tables.Add(dsTable_Directions);
-            DisciplinesDirectionsRelation.Tables [dsTable_Directions].Columns.Add(dsDirections_direction_id);
+            DisciplinesDirectionsRelation.Tables[dsTable_Directions].Columns.Add(dsDirections_direction_id);
             DisciplinesDirectionsRelation.Tables[dsTable_Directions].Columns.Add(dstDisciplines_discipline_name);
             DisciplinesDirectionsRelation.Tables[dsTable_Directions].PrimaryKey =
                 new DataColumn[] { DisciplinesDirectionsRelation.Tables[dsTable_Directions].Columns[dstDisciplines_discipline_id] };
@@ -207,7 +207,7 @@ namespace DataSet
 
         private void comboBoxStudentsDirection_SelectedIndexChanged(object sender, EventArgs e)
         {
-           // comboBoxStudendsGroup.DataSource = GroupsRelatedData.Tables["Groups"];
+            // comboBoxStudendsGroup.DataSource = GroupsRelatedData.Tables["Groups"];
             try
             {
                 comboBoxStudendsGroup.Enabled = true;
@@ -220,7 +220,7 @@ namespace DataSet
             catch (Exception ex)
             {
                 //MessageBox.Show(ex.Message, "Группы отсутсвуют", MessageBoxButtons.OK);
-               // comboBoxStudendsGroup.DataSource = null;
+                // comboBoxStudendsGroup.DataSource = null;
                 //comboBoxStudendsGroup.Items.Clear();
                 comboBoxStudendsGroup.Enabled = false;
             }
@@ -228,6 +228,23 @@ namespace DataSet
 
         private void comboBoxDisciplinesForDirection_SelectedIndexChanged(object sender, EventArgs e)
         {
+
+            DataRowView selectedDirection = (DataRowView)comboBoxDisciplinesForDirection.SelectedItem;
+           // int direction = Convert.ToInt32(selectedDirection["direction_id"]);
+            string direction = selectedDirection["direction_id"].ToString();
+
+            DataTable Disciplines = DisciplinesDirectionsRelation.Tables["Disciplines"];
+            DataTable DDR = DisciplinesDirectionsRelation.Tables["DisciplinesDirectionsRelation"];
+
+            dataGridViewDisciplines.DataSource =
+                (
+                from ddr in DDR.AsEnumerable()
+                where ddr.Field<string>("direction") == direction
+                join discipline in Disciplines.AsEnumerable()
+                on ddr.Field<string>("discipline") equals discipline.Field<string>("discipline_id")
+                select discipline
+                ).CopyToDataTable();
+
             ////1)Получаем набор значений из связующей таблицы
             //DataRow[] ddr = DisciplinesDirectionsRelation.Tables["DisciplinesDirectionsRelation"]
             //    .Select($"direction={comboBoxDisciplinesForDirection.SelectedValue}");
@@ -259,7 +276,7 @@ namespace DataSet
 
             //var disciplines = from discipline in DisciplinesDirectionsRelation.Tables["Disciplines"] select(" ");
             //Console.WriteLine(disciplines.GetType());
-            
+
         }
     }
 }

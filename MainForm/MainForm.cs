@@ -67,7 +67,7 @@ namespace MainForm
 
 
 
-            //////////////////////////////////////////////////
+            ////////////////////////////////////////////////// 
             d_groupDirection = LoadDataToComboBox("*", "Directions");
             comboBoxGroupsDirection.Items.AddRange(d_groupDirection.Keys.ToArray());
             comboBoxGroupsDirection.SelectedIndex = 0;
